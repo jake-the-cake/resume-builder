@@ -11,6 +11,6 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 mongoose_1.default.connect(process.env.DATABASE_ACCESS).then(() => console.log('data is flowing')).catch(err => console.error(err.message));
 app.use('/resume', ResumeRouter_1.ResumeRouter);
-app.listen(5500, () => {
+app.listen(process.env.PORT || 5500, () => {
     console.log('connected at 5.5k');
 });

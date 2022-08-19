@@ -1,8 +1,8 @@
-import { Router } from 'express'
+import { Request, Response, Router } from 'express'
 
-const router = Router()
+const router: Router = Router()
 
-router.get('/', (req,res) => {
+router.get('/', (req ,res) => {
   res.status(200).json({
     page:'this one'
   })
