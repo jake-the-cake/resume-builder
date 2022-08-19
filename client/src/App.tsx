@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <Header />
-      <RegistrationForm />
+      <div className="page__content">
+        <RegistrationForm />
+      </div>
       <Footer />
     </>
   );
