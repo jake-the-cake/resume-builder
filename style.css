@@ -1,0 +1,26 @@
+:root {
+  --dark: #373737;
+  --lighter: #ededed;
+  --red: #ed6937;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark);
+  margin: 0px;
+  color: var(--lighter);
+
+}
+
+.page__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.page__header {}
