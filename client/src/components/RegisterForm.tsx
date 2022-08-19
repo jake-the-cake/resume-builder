@@ -1,12 +1,29 @@
 import React, { FC, FormEventHandler } from 'react'
 import { InputField } from './sub/InputField'
 
-const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+const handleRegistrationSubmit: FormEventHandler<HTMLFormElement> = (event) => {
   event.preventDefault()
   const formChildData = (event.target as HTMLFormElement).children.namedItem('registration-form')?.children
-  console.log(formChildData)
+
+  interface ValidationProps {
+    (sample: any) : {error?: string, response?: string} | undefined
+  }
+
+  const validateNonNumericString: ValidationProps = ({ sample }) => {
+    if (typeof sample === 'string') {
+      const dividedSample = sample.split('')
+      dividedSample.forEach((element: any) => {
+        console.log(element)
+        return {response: sample}
+      })
+    }
+    else {
+      return {error:'something went wrong'}
+    }
+  }
+  
   const dataToSend = {
-    firstName: (formChildData?.namedItem('first-name') as HTMLInputElement).value || '',
+    firstName: validateNonNumericString((formChildData?.namedItem('first-name') as HTMLInputElement).value),
     lastName: (formChildData?.namedItem('last-name') as HTMLInputElement).value || '',
     email: (formChildData?.namedItem('email') as HTMLInputElement).value || '',
     birthDate: (formChildData?.namedItem('birth-date') as HTMLInputElement).value || '',
@@ -16,7 +33,7 @@ const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
 
 export const RegistrationForm: FC = () => {
   return (
-    <form className='form__container' onSubmit={handleSubmit}>
+    <form className='form__container' onSubmit={handleRegistrationSubmit}>
       
       <div className="form__input--column form--shadow" id='registration-form'>
         <InputField
