@@ -1,0 +1,15 @@
+POST http://localhost:5500/auth/register HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Quiet",
+    "lastName": "Goat",
+    "email": "jake@quietgoat.com",
+    "birthDate": "03/31/1985"
+}
+
+###
+
+GET http://localhost:5500/resume/
+
+###
