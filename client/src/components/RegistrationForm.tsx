@@ -103,7 +103,7 @@ export const RegistrationForm: FC = () => {
       </div>
       
       <button
-        className="form__button--main form--shadow mt_1 full-width"
+        className="form__button--main form--shadow mt_1p5 full-width"
       >
       Register</button>
       <div className="form__footer mt_1">
