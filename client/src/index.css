@@ -69,16 +69,16 @@ code {
 }
 
 .form__title {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .form__back {
   position: relative;
-  margin-left: 7px;
-  margin-top: 4px;
+  margin-left: -3px;
+  margin-top: 5px;
   border-top-right-radius: 80px;
-    border-bottom-right-radius: -20px;
-  width: 1.5rem;
+  border-bottom-right-radius: -20px;
+  width: 2rem;
   height: 1.5rem;
   border-right: 7px solid var(--red);
   transform: rotate(-25deg);
@@ -91,15 +91,17 @@ code {
   border-width: 6px;
   border-right-width: 15px;
   border-style: solid;
-  border-color: var(--red);
+  border-color: transparent;
+  /* border-color: var(--red); */
   display: block;
-  border-left-color: transparent;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  top: -4px;
-  left: -7px;
+  /* border-left-color: transparent; */
+  /* border-top-color: transparent; */
+  /* border-bottom-color: transparent; */
+  border-right-color: var(--red);
+  top: -5px;
+  left: 3px;
   content: '';
-  transform: rotate(25deg);
+  transform: rotate(35deg);
 }
 
 .form--shadow {
