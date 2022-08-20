@@ -92,11 +92,7 @@ code {
   border-right-width: 15px;
   border-style: solid;
   border-color: transparent;
-  /* border-color: var(--red); */
   display: block;
-  /* border-left-color: transparent; */
-  /* border-top-color: transparent; */
-  /* border-bottom-color: transparent; */
   border-right-color: var(--red);
   top: -5px;
   left: 3px;
@@ -131,10 +127,15 @@ code {
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
+  transition: opacity .3s, color .3s;
+}
+
+.form__button--main:hover {
+  opacity: .8;
+  color: hsl(220 100% 25% / 1);
 }
 
 .form__footer {
-  margin-top: 1rem;
   display: flex;
   justify-content: center;
   font-size: .7rem;
@@ -151,11 +152,12 @@ code {
   font-weight: 700;
   text-decoration: none;
   color: hsl(220 70% 65% / 1);
-  transition: opacity .3s;
+  transition: opacity .3s, color .3s;
 }
 
 .form__footer a:hover {
-  opacity: .7;
+  color: hsl(220 100% 25% / 1);
+  opacity: .8;
 }
 
 /* ////////////////// */
