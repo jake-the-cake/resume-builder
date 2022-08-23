@@ -45,6 +45,16 @@ code {
   display: flex;
   padding: 1rem;
   width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page__header--title {
+  font-size: 1.6rem;
+}
+
+.page__header--menu {
+  background-color: red;
 }
 
 .page__content {

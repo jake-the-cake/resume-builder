@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-export const Dashboard = () => {
+export const Dashboard: FC = () => {
   return (
     <div className="page">Homepage</div>
   )
