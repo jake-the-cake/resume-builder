@@ -11,9 +11,17 @@ interface InputFieldProps {
 
 export const InputField: FC<InputFieldProps> = ({ name, placeholder, type, width, id, className }) => {
 
-  const checkForElementId = () => {
-    return `id=${id}`
+  const checkForElementId = (id: string | undefined) => {
+    console.log(`id=${id}`)
+    const element = document.getElementById(id as string)
+    if (element !== null) {
+      return element!.id
+    }
+    else {
+      return undefined
+    }
   }
+
 
   return (
     <Fragment>
@@ -23,7 +31,7 @@ export const InputField: FC<InputFieldProps> = ({ name, placeholder, type, width
         placeholder={placeholder || ''}
         width={width || 'auto'}
         className={`form__input ${className || ''}`}
-        id={id || undefined}
+        id={checkForElementId(id)}
       />
     </Fragment>
   )
