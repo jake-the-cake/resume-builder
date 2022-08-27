@@ -2,18 +2,30 @@ import { ValidationProps } from "./validatorInterfaces"
 
 export const validateEmailAddress: ValidationProps = (sample) => {
   if (typeof sample === 'string' && sample !== '') {
+    sample = sample.trim()
     let isError = false
-
     const dividedSample = sample.split('@')
     if (dividedSample.length !== 2) isError = true
     else {
-      dividedSample[0].replace('.', '').split('').forEach(element => {
+      const dividedDomain = dividedSample[1].split('.')
+      if (dividedDomain.length < 2) isError = true
+      else {
+        dividedDomain.forEach((section: string, index: number) => {
+          const splitSection = section.split('')
+          if (index > 0 && splitSection.length > 5) isError = true
+          splitSection.every(element => {
+            if (!/^[a-zA-Z0-9]/.test(element)) {
+              isError = true
+              return false
+            }
+            return true
+          })
+        })
+      }
+      dividedSample[0].replace('.', '').split('').forEach((element: string) => {
         if (!/^[a-zA-Z0-9]/.test(element)) isError = true
       })
     }
-
-    console.log(dividedSample)
-
 
 
     // const dividedSample = sample.split('')

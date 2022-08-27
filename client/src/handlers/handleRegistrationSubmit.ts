@@ -9,8 +9,8 @@ export const handleRegistrationSubmit: FormEventHandler<HTMLFormElement> = async
   const formChildData = (event.target as HTMLFormElement).children.namedItem('registration-form')?.children
   const errorLogArray: object[] = []
 
-  const runValidationOn = (element: string, validator: CallableFunction) => {
-    const validationResults: ValidationReturnProps | undefined = validator((formChildData?.namedItem(element) as HTMLInputElement).value)
+  const runValidationOn = (element: string, validator: CallableFunction, {exceptions}: {exceptions?: string} = {}) => {
+    const validationResults: ValidationReturnProps | undefined = validator((formChildData?.namedItem(element) as HTMLInputElement).value, exceptions)
     if (validationResults?.response) return validationResults.response
     else {
       errorLogArray.push({error: validationResults?.error, atElement:element})
@@ -19,11 +19,13 @@ export const handleRegistrationSubmit: FormEventHandler<HTMLFormElement> = async
   }
 
   const dataToSend = {
-    firstName: runValidationOn('first-name', validateNonNumericString),
-    lastName: runValidationOn('last-name', validateNonNumericString),
+    firstName: runValidationOn('first-name', validateNonNumericString, {exceptions:'\'-'}),
+    lastName: runValidationOn('last-name', validateNonNumericString, {exceptions: '\'-'}),
     email: runValidationOn('email', validateEmailAddress),
     birthDate: runValidationOn('birth-date', validateNonNumericString)
   }
+
+  console.log(dataToSend)
   
   if (errorLogArray.length < 1) {
     await UseAxios('auth/register', dataToSend)

@@ -12,7 +12,6 @@ interface InputFieldProps {
 export const InputField: FC<InputFieldProps> = ({ name, placeholder, type, width, id, className }) => {
 
   const checkForElementId = (id: string | undefined) => {
-    console.log(`id=${id}`)
     const element = document.getElementById(id as string)
     if (element !== null) {
       return element!.id

@@ -4,7 +4,7 @@ interface ValidationReturnProps {
 }
 
 interface ValidationProps {
-  (sample: any) : ValidationReturnProps | undefined
+  (sample: any, exceptions: string | undefined) : ValidationReturnProps | undefined
 }
 
 export type {
