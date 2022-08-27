@@ -1,7 +1,8 @@
-import axios from "axios"
 import { FormEventHandler } from "react"
 import { UseAxios } from "../hooks/useAxios"
-import { validateNonNumericString, ValidationReturnProps } from "../validators/validateNonNumericString"
+import { validateEmailAddress } from "../validators/validateEmailAddress"
+import { validateNonNumericString } from "../validators/validateNonNumericString"
+import { ValidationReturnProps } from "../validators/validatorInterfaces"
 
 export const handleRegistrationSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
   event.preventDefault()
@@ -20,7 +21,7 @@ export const handleRegistrationSubmit: FormEventHandler<HTMLFormElement> = async
   const dataToSend = {
     firstName: runValidationOn('first-name', validateNonNumericString),
     lastName: runValidationOn('last-name', validateNonNumericString),
-    email: runValidationOn('email', validateNonNumericString),
+    email: runValidationOn('email', validateEmailAddress),
     birthDate: runValidationOn('birth-date', validateNonNumericString)
   }
   
